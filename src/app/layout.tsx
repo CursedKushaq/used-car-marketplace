@@ -1,13 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Sans } from "next/font/google";
 import "./globals.css";
-
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-noto-sans",
-  weight: ["400", "500", "600", "700"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -22,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "AutoBazaar",
-    locale: "en_US",
+    locale: "en_IN",
   },
   robots: {
     index: true,
@@ -42,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={notoSans.variable}>
+    <html lang="en">
       <body className="min-h-dvh bg-canvas font-sans text-ink antialiased">
         {children}
       </body>

@@ -1,0 +1,38 @@
+{
+  "common": {
+    "brand": "AutoBazaar",
+    "tagline": "India's Trust-First Used Car Marketplace",
+    "search": "Search",
+    "filters": "Filters",
+    "allFilters": "All Filters",
+    "clearAll": "Clear All",
+    "viewCars": "View Cars",
+    "verified": "Verified",
+    "greatPrice": "Great Price",
+    "fairPrice": "Fair Price",
+    "aboveMarket": "Above Market",
+    "contactSeller": "Contact Seller",
+    "bookViewing": "Book a Viewing",
+    "compare": "Compare",
+    "save": "Save",
+    "share": "Share",
+    "loading": "Loading...",
+    "km": "km",
+    "lakh": "Lakh",
+    "crore": "Cr"
+  },
+  "nav": {
+    "browse": "Browse Used Cars",
+    "sell": "Sell Your Car",
+    "dealers": "Verified Dealers",
+    "guides": "Guides & Advice",
+    "howWeVerify": "How We Verify",
+    "priceRatings": "Price Ratings",
+    "signIn": "Sign In"
+  },
+  "home": {
+    "heroTitle": "Find your trusted used car with full price transparency",
+    "heroSubtitle": "Zero hidden defects. Objective price ratings vs market comparables. Unbiased verification ladder.",
+    "searchPlaceholder": "Search by make, model, city, e.g. Swift Delhi, Creta Mumbai..."
+  }
+}

@@ -1,0 +1,14 @@
+allowBuilds:
+  '@parcel/watcher': true
+  '@sentry/cli': true
+  '@swc/core': true
+  core-js: true
+  esbuild: true
+  sharp: true
+onlyBuiltDependencies:
+  - "@parcel/watcher"
+  - "@sentry/cli"
+  - "@swc/core"
+  - "core-js"
+  - "esbuild"
+  - "sharp"
