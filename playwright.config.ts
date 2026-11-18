@@ -1,6 +1,6 @@
 import playwright from "@playwright/test";
 
-const { defineConfig, devices } = playwright;
+const { defineConfig, devices } = (playwright as any);
 
 export default defineConfig({
   testDir: "./e2e",
