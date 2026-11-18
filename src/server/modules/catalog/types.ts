@@ -44,17 +44,26 @@ export interface PaperworkDetails {
 
 export interface SellerProfile {
   id: string;
+  slug?: string;
   type: SellerType;
   name: string;
   phoneMasked: string;
   phoneReal?: string; // used after OTP reveal
+  whatsappNumber?: string;
   city: string;
   locality: string;
+  address?: string;
   rating?: number;
   reviewCount?: number;
   medianResponseHours: number;
   accuracyScorePercent: number; // e.g. 98%
   verifiedSinceYear: number;
+  tradeCertificateNo?: string;
+  gstin?: string;
+  showroomHours?: string;
+  description?: string;
+  services?: string[];
+  bannerUrl?: string;
 }
 
 export interface CarListing {

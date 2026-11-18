@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { getAllListings } from "@/server/modules/listings/service";
+import { getAllListings, getAllDealers } from "@/server/modules/listings/service";
 import {
   POPULAR_INDIAN_MAKES,
   MAJOR_INDIAN_CITIES,
@@ -17,11 +17,23 @@ import {
   ArrowRight,
   Car,
   BookOpen,
+  Building2,
+  Star,
+  MapPin,
+  MessageCircle,
 } from "lucide-react";
 
 export default function HomePage() {
   const listings = getAllListings();
   const popularCars = listings.slice(0, 6);
+  const dealers = getAllDealers();
+  const apDealers = dealers
+    .filter((d) =>
+      ["Visakhapatnam", "Vijayawada", "Guntur", "Tirupati", "Rajahmundry"].includes(
+        d.profile.city
+      )
+    )
+    .slice(0, 4);
 
   return (
     <div className="space-y-16 sm:space-y-24">
@@ -66,15 +78,15 @@ export default function HomePage() {
 
           {/* Quick Model Links */}
           <div className="flex flex-wrap items-center justify-center gap-1.5 text-xs">
-            <span className="text-muted font-semibold">Popular in India:</span>
-            {["Maruti Swift", "Hyundai Creta", "Mahindra Thar", "Tata Nexon", "Honda City", "Toyota Innova"].map(
-              (model) => (
+            <span className="text-muted font-semibold">Popular in Andhra Pradesh &amp; India:</span>
+            {["Visakhapatnam", "Vijayawada", "Innova Crysta", "Hyundai Creta", "Maruti Swift", "Kia Seltos", "Mahindra Thar"].map(
+              (term) => (
                 <Link
-                  key={model}
-                  href={`/used-cars?q=${encodeURIComponent(model)}`}
+                  key={term}
+                  href={`/used-cars?q=${encodeURIComponent(term)}`}
                   className="rounded-full border border-muted/20 bg-surface px-3 py-1 font-medium text-ink hover:border-primary hover:text-primary transition-colors"
                 >
-                  {model}
+                  {term}
                 </Link>
               )
             )}
@@ -117,6 +129,81 @@ export default function HomePage() {
               </span>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* ── Featured Andhra Pradesh Showrooms (For Dealers & Buyers) ── */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-[11px] font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full mb-1">
+              <Building2 className="w-3.5 h-3.5" />
+              <span>Verified Dealer Network</span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-ink">
+              Featured Showrooms in Andhra Pradesh
+            </h2>
+            <p className="text-xs text-muted">
+              Certified multi-brand dealerships in Visakhapatnam, Vijayawada, Guntur &amp; Tirupati
+            </p>
+          </div>
+          <Link
+            href="/dealers"
+            className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
+          >
+            <span>View all dealers</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {apDealers.map(({ profile, stockCount }) => {
+            const showroomUrl = `/dealers/${profile.slug || profile.id}`;
+            return (
+              <div
+                key={profile.id}
+                className="group rounded-2xl border border-muted/15 bg-surface p-5 space-y-3 hover:border-primary hover:shadow-md transition-all flex flex-col justify-between"
+              >
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="w-10 h-10 rounded-xl bg-canvas border border-muted/15 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                      <Building2 className="w-5 h-5" />
+                    </div>
+                    {profile.rating && (
+                      <span className="flex items-center gap-1 text-xs font-bold text-amber-900 bg-amber-50 border border-amber-200/80 px-2 py-0.5 rounded-lg">
+                        <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
+                        <span>{profile.rating}</span>
+                      </span>
+                    )}
+                  </div>
+
+                  <div>
+                    <Link href={showroomUrl}>
+                      <h3 className="font-extrabold text-sm text-ink group-hover:text-primary transition-colors line-clamp-1">
+                        {profile.name}
+                      </h3>
+                    </Link>
+                    <p className="text-[11px] text-muted flex items-center gap-1 mt-0.5">
+                      <MapPin className="w-3 h-3 text-primary shrink-0" />
+                      <span className="truncate">{profile.locality}, {profile.city}</span>
+                    </p>
+                  </div>
+
+                  <div className="text-[11px] text-primary font-semibold bg-primary/5 rounded-lg p-2 flex items-center justify-between">
+                    <span>Showroom Stock:</span>
+                    <span className="font-bold">{stockCount} Verified Cars</span>
+                  </div>
+                </div>
+
+                <Link href={showroomUrl}>
+                  <Button size="sm" variant="outline" className="w-full text-xs gap-1 mt-1">
+                    <span>Enter Showroom</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Button>
+                </Link>
+              </div>
+            );
+          })}
         </div>
       </section>
 

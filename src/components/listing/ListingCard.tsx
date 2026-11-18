@@ -166,9 +166,20 @@ export const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
         <div className="mt-3 flex items-center justify-between gap-2">
           <VerificationLadderBadge summary={listing.verificationLadder} />
 
-          <span className="text-[11px] font-semibold text-muted bg-canvas border border-muted/15 rounded-md px-2 py-0.5 capitalize">
-            {listing.seller.type === "individual" ? "Direct Owner" : "Verified Dealer"}
-          </span>
+          {listing.seller.type === "verified_dealer" ? (
+            <Link
+              href={`/dealers/${listing.seller.slug || listing.seller.id}`}
+              onClick={(e) => e.stopPropagation()}
+              className="text-[11px] font-semibold text-primary hover:underline bg-primary/5 border border-primary/20 rounded-md px-2 py-0.5 truncate max-w-[140px]"
+              title={listing.seller.name}
+            >
+              {listing.seller.name}
+            </Link>
+          ) : (
+            <span className="text-[11px] font-semibold text-muted bg-canvas border border-muted/15 rounded-md px-2 py-0.5 capitalize">
+              Direct Owner
+            </span>
+          )}
         </div>
 
         {/* Locality & Compare Toggle */}

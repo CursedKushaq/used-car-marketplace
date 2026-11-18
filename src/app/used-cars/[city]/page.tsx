@@ -23,6 +23,20 @@ export async function generateMetadata({
   };
 }
 
+export async function generateStaticParams() {
+  return [
+    { city: "visakhapatnam" },
+    { city: "vijayawada" },
+    { city: "guntur" },
+    { city: "tirupati" },
+    { city: "rajahmundry" },
+    { city: "delhi-ncr" },
+    { city: "mumbai" },
+    { city: "bengaluru" },
+    { city: "hyderabad" },
+  ];
+}
+
 export default async function CityUsedCarsPage({
   params,
   searchParams,

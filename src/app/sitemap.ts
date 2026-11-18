@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllListings } from "@/server/modules/listings/service";
+import { getAllListings, getAllDealers } from "@/server/modules/listings/service";
 import { MAJOR_INDIAN_CITIES } from "@/server/modules/catalog/data";
 import { GUIDES } from "@/lib/guides";
 
@@ -13,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/used-cars`, lastModified: now, priority: 0.9 },
     { url: `${baseUrl}/sell`, lastModified: now, priority: 0.8 },
     { url: `${baseUrl}/dealers`, lastModified: now, priority: 0.8 },
+    { url: `${baseUrl}/dealer`, lastModified: now, priority: 0.7 },
+    { url: `${baseUrl}/compare`, lastModified: now, priority: 0.7 },
     { url: `${baseUrl}/how-we-verify`, lastModified: now, priority: 0.7 },
     { url: `${baseUrl}/how-price-ratings-work`, lastModified: now, priority: 0.7 },
     { url: `${baseUrl}/safety`, lastModified: now, priority: 0.7 },
@@ -25,6 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // City pages
   const cityRoutes: MetadataRoute.Sitemap = MAJOR_INDIAN_CITIES.map((city) => ({
     url: `${baseUrl}/used-cars/${encodeURIComponent(city.toLowerCase().replace(/\s+/g, "-"))}`,
+    lastModified: now,
+    priority: 0.8,
+  }));
+
+  // Dealer Showroom Pages
+  const dealers = getAllDealers();
+  const dealerRoutes: MetadataRoute.Sitemap = dealers.map((d) => ({
+    url: `${baseUrl}/dealers/${d.profile.slug || d.profile.id}`,
     lastModified: now,
     priority: 0.8,
   }));
@@ -44,5 +54,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...cityRoutes, ...guideRoutes, ...carRoutes];
+  return [...staticRoutes, ...cityRoutes, ...dealerRoutes, ...guideRoutes, ...carRoutes];
 }

@@ -1,6 +1,8 @@
 import React from "react";
+import Link from "next/link";
 import type { SellerProfile } from "@/server/modules/catalog/types";
-import { Building2, User, Clock, Star, CheckCircle, ShieldCheck } from "lucide-react";
+import { Building2, User, Clock, Star, CheckCircle, ShieldCheck, ArrowRight, MessageCircle } from "lucide-react";
+import { Button } from "../ui/Button";
 
 interface DealerScorecardViewProps {
   seller: SellerProfile;
@@ -10,9 +12,17 @@ export const DealerScorecardView: React.FC<DealerScorecardViewProps> = ({
   seller,
 }) => {
   const isDealer = seller.type !== "individual";
+  const showroomUrl = `/dealers/${seller.slug || seller.id}`;
+
+  const whatsappMsg = encodeURIComponent(
+    `Hello ${seller.name}! I am viewing your car on AutoBazaar and would like more details.`
+  );
+  const whatsappUrl = seller.whatsappNumber
+    ? `https://wa.me/${seller.whatsappNumber.replace(/[^0-9]/g, "")}?text=${whatsappMsg}`
+    : `https://wa.me/919848091822?text=${whatsappMsg}`;
 
   return (
-    <div className="rounded-2xl border border-muted/15 bg-surface p-6 space-y-4">
+    <div className="rounded-2xl border border-muted/15 bg-surface p-6 space-y-4 shadow-xs">
       <div className="flex items-start justify-between gap-4 border-b border-muted/10 pb-4">
         <div className="flex items-center gap-3">
           <div className="p-3 rounded-2xl bg-canvas border border-muted/15 text-primary">
@@ -23,8 +33,14 @@ export const DealerScorecardView: React.FC<DealerScorecardViewProps> = ({
             )}
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <h3 className="font-bold text-ink text-base">{seller.name}</h3>
+            <div className="flex flex-wrap items-center gap-2">
+              {isDealer ? (
+                <Link href={showroomUrl} className="hover:text-primary transition-colors">
+                  <h3 className="font-bold text-ink text-base">{seller.name}</h3>
+                </Link>
+              ) : (
+                <h3 className="font-bold text-ink text-base">{seller.name}</h3>
+              )}
               {isDealer && (
                 <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
                   <ShieldCheck className="w-3 h-3 text-emerald-600" />
@@ -81,6 +97,26 @@ export const DealerScorecardView: React.FC<DealerScorecardViewProps> = ({
           </p>
         </div>
       </div>
+
+      {/* If Dealer: Showroom Link and WhatsApp CTA */}
+      {isDealer && (
+        <div className="pt-2 border-t border-muted/10 flex flex-wrap items-center justify-between gap-2">
+          <Link
+            href={showroomUrl}
+            className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
+          >
+            <span>View Full Showroom &amp; Other Lot Stock</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+            <Button size="sm" variant="outline" className="gap-1.5 text-xs">
+              <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+              <span>WhatsApp Dealer</span>
+            </Button>
+          </a>
+        </div>
+      )}
     </div>
   );
 };

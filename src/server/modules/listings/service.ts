@@ -265,3 +265,49 @@ export async function getPopularCars(limit: number = 6): Promise<CarListing[]> {
   );
   return sorted.slice(0, limit);
 }
+
+export interface DealerWithInventory {
+  profile: CarListing["seller"];
+  inventory: CarListing[];
+  stockCount: number;
+}
+
+export function getAllDealers(): DealerWithInventory[] {
+  const all = getAllListings();
+  const dealerMap = new Map<string, DealerWithInventory>();
+
+  for (const car of all) {
+    if (car.seller.type === "verified_dealer") {
+      const existing = dealerMap.get(car.seller.id);
+      if (existing) {
+        existing.inventory.push(car);
+        existing.stockCount = existing.inventory.length;
+      } else {
+        dealerMap.set(car.seller.id, {
+          profile: car.seller,
+          inventory: [car],
+          stockCount: 1,
+        });
+      }
+    }
+  }
+
+  return Array.from(dealerMap.values());
+}
+
+export function getDealerBySlug(slugOrId: string): DealerWithInventory | null {
+  const dealers = getAllDealers();
+  return (
+    dealers.find(
+      (d) =>
+        d.profile.slug === slugOrId ||
+        d.profile.id === slugOrId ||
+        d.profile.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") === slugOrId
+    ) || null
+  );
+}
+
+export function getListingsByDealer(dealerId: string): CarListing[] {
+  const all = getAllListings();
+  return all.filter((car) => car.seller.id === dealerId);
+}

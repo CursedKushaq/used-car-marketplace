@@ -28,6 +28,7 @@ import {
   MapPin,
   Clock,
   Sparkles,
+  MessageCircle,
 } from "lucide-react";
 
 interface VehicleDetailContentProps {
@@ -168,14 +169,34 @@ export const VehicleDetailContent: React.FC<VehicleDetailContentProps> = ({
             </div>
 
             {/* Primary Action Buttons */}
-            <div className="space-y-3 pt-2">
+            <div className="space-y-2.5 pt-2">
+              {listing.seller.type === "verified_dealer" && (
+                <a
+                  href={`https://wa.me/${(listing.seller.whatsappNumber || "919848091822").replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
+                    `Hello ${listing.seller.name}! I am interested in the ${listing.title} (${listing.registrationNumberMasked || ""}) listed on AutoBazaar in ${listing.city}. Is it available for a test drive?`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full"
+                >
+                  <Button
+                    size="lg"
+                    className="w-full gap-2 text-sm sm:text-base font-bold bg-[#25D366] hover:bg-[#1EBE5D] text-white border-none shadow-md cursor-pointer"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    <span>Chat with Showroom on WhatsApp</span>
+                  </Button>
+                </a>
+              )}
+
               <Button
                 size="lg"
+                variant={listing.seller.type === "verified_dealer" ? "secondary" : "primary"}
                 onClick={() => setEnquiryModalOpen(true)}
-                className="w-full gap-2 text-base font-bold shadow-md cursor-pointer"
+                className="w-full gap-2 text-sm sm:text-base font-bold shadow-xs cursor-pointer"
               >
-                <Phone className="w-5 h-5" />
-                <span>Check Availability &amp; Contact Seller</span>
+                <Phone className="w-4 h-4" />
+                <span>Check Availability &amp; Unlock Phone</span>
               </Button>
 
               <div className="grid grid-cols-3 gap-2">
