@@ -49,13 +49,13 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 space-y-6">
       {/* ── Page Header & Result Meta ─────────────────── */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-muted/15 pb-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200/90 pb-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
             Used Cars for Sale in India
           </h1>
-          <p className="text-xs text-muted mt-1">
-            Showing <strong className="text-ink font-semibold">{initialResults.total}</strong> verified vehicles with objective price ratings
+          <p className="text-xs text-slate-500 mt-1">
+            Showing <strong className="text-slate-900 font-semibold">{initialResults.total}</strong> verified vehicles with objective price ratings
           </p>
         </div>
 
@@ -64,20 +64,20 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
           <button
             type="button"
             onClick={() => setMobileFilterOpen(true)}
-            className="lg:hidden flex items-center gap-2 rounded-xl border border-muted/20 bg-surface px-3.5 py-2 text-xs font-semibold text-ink shadow-xs"
+            className="lg:hidden flex items-center gap-2 rounded-xl border border-slate-200/90 bg-white px-3.5 py-2 text-xs font-semibold text-slate-900 shadow-xs cursor-pointer"
           >
-            <SlidersHorizontal className="w-4 h-4 text-primary" />
+            <SlidersHorizontal className="w-4 h-4 text-blue-600" />
             <span>Filters</span>
           </button>
 
           {/* Sort Control */}
-          <div className="flex items-center gap-1.5 rounded-xl border border-muted/20 bg-surface px-3 py-1.5 text-xs text-muted shadow-xs">
-            <ArrowUpDown className="w-3.5 h-3.5 text-primary" />
+          <div className="flex items-center gap-1.5 rounded-xl border border-slate-200/90 bg-white px-3 py-1.5 text-xs text-slate-600 shadow-xs">
+            <ArrowUpDown className="w-3.5 h-3.5 text-blue-600" />
             <span className="hidden sm:inline">Sort:</span>
             <select
               value={currentSort}
               onChange={(e) => handleSortChange(e.target.value)}
-              className="bg-transparent font-semibold text-ink focus:outline-none cursor-pointer"
+              className="bg-transparent font-semibold text-slate-900 focus:outline-none cursor-pointer"
             >
               <option value="relevance">Best Match</option>
               <option value="price_asc">Price: Low to High</option>
@@ -89,14 +89,14 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
           </div>
 
           {/* Grid / List View Toggle */}
-          <div className="hidden sm:flex items-center rounded-xl border border-muted/20 bg-surface p-1 shadow-xs">
+          <div className="hidden sm:flex items-center rounded-xl border border-slate-200/90 bg-white p-1 shadow-xs">
             <button
               onClick={() => setViewMode("grid")}
               aria-label="Grid view"
-              className={`p-1.5 rounded-lg transition-colors ${
+              className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                 viewMode === "grid"
-                  ? "bg-primary text-white"
-                  : "text-muted hover:text-ink"
+                  ? "bg-blue-600 text-white"
+                  : "text-slate-500 hover:text-slate-900"
               }`}
             >
               <LayoutGrid className="w-4 h-4" />
@@ -104,10 +104,10 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
             <button
               onClick={() => setViewMode("list")}
               aria-label="List view"
-              className={`p-1.5 rounded-lg transition-colors ${
+              className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                 viewMode === "list"
-                  ? "bg-primary text-white"
-                  : "text-muted hover:text-ink"
+                  ? "bg-blue-600 text-white"
+                  : "text-slate-500 hover:text-slate-900"
               }`}
             >
               <List className="w-4 h-4" />

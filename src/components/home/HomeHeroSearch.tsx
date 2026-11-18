@@ -40,11 +40,11 @@ export const HomeHeroSearch: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto max-w-4xl space-y-6">
+    <div className="mx-auto max-w-4xl space-y-5">
       {/* ── City Quick Selector Bar (CarDekho style) ──────── */}
-      <div className="flex items-center justify-center gap-1.5 flex-wrap text-xs font-semibold text-muted">
-        <span className="flex items-center gap-1 text-ink mr-1">
-          <MapPin className="w-3.5 h-3.5 text-primary" />
+      <div className="flex items-center justify-center gap-1.5 flex-wrap text-xs font-semibold text-slate-600">
+        <span className="flex items-center gap-1 text-slate-900 font-bold mr-1">
+          <MapPin className="w-3.5 h-3.5 text-blue-600" />
           <span>Top AP Hubs:</span>
         </span>
         {["Visakhapatnam", "Vijayawada", "Guntur", "Tirupati", "Rajahmundry", "Hyderabad"].map((city) => (
@@ -57,8 +57,8 @@ export const HomeHeroSearch: React.FC = () => {
             }}
             className={`rounded-full px-3 py-1 transition-all ${
               selectedCity === city
-                ? "bg-primary text-white shadow-xs"
-                : "bg-surface border border-muted/20 text-ink hover:border-primary hover:text-primary"
+                ? "bg-blue-600 text-white shadow-xs font-bold"
+                : "bg-white border border-slate-200/90 text-slate-700 hover:border-blue-400 hover:text-blue-600 hover:bg-blue-50/50 shadow-xs"
             }`}
           >
             {city}
@@ -67,9 +67,9 @@ export const HomeHeroSearch: React.FC = () => {
       </div>
 
       {/* ── Main Tabbed Search Box (CarDekho / CarWale style) ── */}
-      <div className="rounded-3xl border border-muted/20 bg-surface p-3 sm:p-5 shadow-xl space-y-4">
+      <div className="rounded-3xl border border-slate-200/90 bg-white p-3.5 sm:p-6 shadow-xl shadow-slate-200/50 space-y-4">
         {/* Navigation Tabs */}
-        <div className="flex items-center justify-center gap-1 sm:gap-2 border-b border-muted/10 pb-3">
+        <div className="flex items-center justify-center gap-1 sm:gap-2 border-b border-slate-100 pb-3">
           {[
             { id: "search", label: "Search by Model", icon: Search },
             { id: "budget", label: "By Budget", icon: IndianRupee },
@@ -85,8 +85,8 @@ export const HomeHeroSearch: React.FC = () => {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   active
-                    ? "bg-primary text-white shadow-xs"
-                    : "text-muted hover:text-ink hover:bg-canvas"
+                    ? "bg-blue-600 text-white shadow-sm shadow-blue-500/20"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                 }`}
               >
                 <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -99,100 +99,128 @@ export const HomeHeroSearch: React.FC = () => {
         {/* Tab 1: Free Search */}
         {activeTab === "search" && (
           <form onSubmit={handleSearchSubmit} className="space-y-3">
-            <div className="flex flex-col sm:flex-row items-center gap-2">
-              <div className="relative flex-1 w-full">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
+            <div className="flex flex-col sm:flex-row gap-2.5">
+              <div className="relative flex-1">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="E.g. Innova Crysta, Creta, Swift, Thar, Seltos, Vizag..."
-                  className="w-full rounded-2xl bg-canvas py-3 pl-10 pr-3 text-sm text-ink placeholder:text-muted/60 focus:outline-none border border-muted/15"
+                  placeholder="e.g. Innova Crysta, Swift VXi, Creta Diesel, City..."
+                  aria-label="Search car model or make"
+                  className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white transition-all font-medium"
                 />
               </div>
 
-              <Button type="submit" size="md" className="w-full sm:w-auto px-8 gap-2 font-bold">
+              <Button
+                type="submit"
+                size="md"
+                className="w-full sm:w-auto px-6 gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-md shadow-blue-500/20"
+              >
                 <Search className="w-4 h-4" />
-                <span>Find Cars</span>
+                <span>Search Cars</span>
               </Button>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-1.5 text-[11px] pt-1">
-              <span className="text-muted font-medium">Trending searches:</span>
-              {["Innova Crysta", "Creta Diesel", "Swift ZXi", "Thar 4x4", "Seltos GTX", "Nexon"].map(
-                (term) => (
-                  <button
-                    key={term}
-                    type="button"
-                    onClick={() => {
-                      setSearchQuery(term);
-                      router.push(`/used-cars?q=${encodeURIComponent(term)}`);
-                    }}
-                    className="rounded-full bg-canvas border border-muted/15 px-2.5 py-0.5 text-ink hover:border-primary hover:text-primary transition-colors"
-                  >
-                    {term}
-                  </button>
-                )
-              )}
+            {/* Quick Suggestions */}
+            <div className="flex items-center gap-2 flex-wrap text-xs text-slate-500 pt-1">
+              <span className="font-semibold text-slate-700">Popular Searches:</span>
+              {["Innova Crysta", "Hyundai Creta", "Maruti Swift", "Honda City", "Tata Nexon"].map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => {
+                    setSearchQuery(item);
+                    router.push(`/used-cars?q=${encodeURIComponent(item)}`);
+                  }}
+                  className="rounded-lg bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-600 px-2 py-0.5 transition-colors cursor-pointer"
+                >
+                  {item}
+                </button>
+              ))}
             </div>
           </form>
         )}
 
         {/* Tab 2: By Budget */}
         {activeTab === "budget" && (
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 py-2">
-            {BUDGET_PRESETS.map((preset) => (
-              <Link
-                key={preset.label}
-                href={`/used-cars?budgetMin=${preset.min}&budgetMax=${preset.max}`}
-                className="group rounded-2xl border border-muted/15 bg-canvas p-3 text-center hover:border-primary hover:bg-surface hover:shadow-xs transition-all"
-              >
-                <span className="text-xs font-bold text-ink group-hover:text-primary transition-colors block">
-                  {preset.label}
-                </span>
-                <span className="text-[10px] text-muted mt-1 block">
-                  View inventory &rarr;
-                </span>
-              </Link>
-            ))}
+          <div className="space-y-3 animate-in fade-in duration-200">
+            <p className="text-xs text-slate-500 text-center">
+              Select your budget range in Indian Rupees (₹)
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
+              {BUDGET_PRESETS.map((preset) => (
+                <button
+                  key={preset.label}
+                  type="button"
+                  onClick={() => {
+                    router.push(`/used-cars?budgetMin=${preset.min}&budgetMax=${preset.max}`);
+                  }}
+                  className="rounded-2xl border border-slate-200/80 bg-slate-50 p-3 text-center hover:border-blue-500 hover:bg-blue-50/60 transition-all cursor-pointer group"
+                >
+                  <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 block">
+                    {preset.label}
+                  </span>
+                  <span className="text-[10px] text-slate-500 mt-0.5 block">
+                    Verified listings &rarr;
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
         {/* Tab 3: By Body Type */}
         {activeTab === "body" && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2">
-            {BODY_TYPES.map((type) => (
-              <Link
-                key={type.id}
-                href={`/used-cars?bodyType=${type.id}`}
-                className="group flex flex-col items-center rounded-2xl border border-muted/15 bg-canvas p-3.5 text-center hover:border-primary hover:bg-surface hover:shadow-xs transition-all"
-              >
-                <div className="w-10 h-10 rounded-xl bg-surface flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors mb-2 shadow-xs">
-                  <Car className="w-5 h-5" />
-                </div>
-                <span className="font-bold text-xs text-ink group-hover:text-primary transition-colors">
-                  {type.label}
-                </span>
-              </Link>
-            ))}
+          <div className="space-y-3 animate-in fade-in duration-200">
+            <p className="text-xs text-slate-500 text-center">
+              Choose vehicle body style suited for Andhra Pradesh highways and city roads
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              {BODY_TYPES.map((type) => (
+                <button
+                  key={type.id}
+                  type="button"
+                  onClick={() => {
+                    router.push(`/used-cars?bodyType=${type.id}`);
+                  }}
+                  className="rounded-2xl border border-slate-200/80 bg-slate-50 p-3 text-center hover:border-blue-500 hover:bg-blue-50/60 transition-all cursor-pointer group"
+                >
+                  <Car className="w-5 h-5 mx-auto text-blue-600 mb-1" />
+                  <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 block">
+                    {type.label}
+                  </span>
+                  <span className="text-[10px] text-slate-500 mt-0.5 block">
+                    Explore &rarr;
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
         {/* Tab 4: By Brand */}
         {activeTab === "brand" && (
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 py-2">
-            {POPULAR_INDIAN_MAKES.slice(0, 6).map((make) => (
-              <Link
-                key={make}
-                href={`/used-cars?make=${encodeURIComponent(make)}`}
-                className="group rounded-xl border border-muted/15 bg-canvas p-3 text-center hover:border-primary hover:bg-surface transition-all"
-              >
-                <span className="font-bold text-xs text-ink group-hover:text-primary transition-colors block truncate">
-                  {make}
-                </span>
-                <span className="text-[10px] text-muted">View stock</span>
-              </Link>
-            ))}
+          <div className="space-y-3 animate-in fade-in duration-200">
+            <p className="text-xs text-slate-500 text-center">
+              Verified inventory by India&apos;s leading automobile manufacturers
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+              {POPULAR_INDIAN_MAKES.map((make) => (
+                <button
+                  key={make}
+                  type="button"
+                  onClick={() => {
+                    router.push(`/used-cars?make=${encodeURIComponent(make)}`);
+                  }}
+                  className="rounded-xl border border-slate-200/80 bg-slate-50 py-2.5 px-3 text-center hover:border-blue-500 hover:bg-blue-50/60 transition-all cursor-pointer group"
+                >
+                  <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 block">
+                    {make}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </div>

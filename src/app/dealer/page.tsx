@@ -103,23 +103,23 @@ export default function DealerPortalPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 space-y-8">
       {/* ── Top Header & Dealership Brand Bar ──────────── */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-muted/15 pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200/90 pb-6">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <div className="p-2 rounded-xl bg-primary/10 text-primary">
+            <div className="p-2 rounded-xl bg-blue-50 text-blue-600 border border-blue-200/80">
               <Building2 className="w-5 h-5" />
             </div>
-            <h1 className="text-2xl font-black text-ink">
+            <h1 className="text-2xl font-black text-slate-900">
               Dealer Management Console
             </h1>
-            <span className="rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2.5 py-0.5 border border-emerald-300">
+            <span className="rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-bold px-2.5 py-0.5 border border-emerald-300">
               Verified AP Partner
             </span>
           </div>
-          <p className="text-xs text-muted mt-1.5 flex items-center gap-1.5">
-            <span className="font-bold text-ink">Sri Venkateswara Car Hub</span>
+          <p className="text-xs text-slate-500 mt-1.5 flex items-center gap-1.5">
+            <span className="font-bold text-slate-900">Sri Venkateswara Car Hub</span>
             <span>&bull;</span>
-            <MapPin className="w-3.5 h-3.5 text-primary" />
+            <MapPin className="w-3.5 h-3.5 text-blue-600" />
             <span>Dwaraka Nagar, Visakhapatnam, AP</span>
             <span>&bull;</span>
             <span>AP RTO TC: AP31/TC/2021/8841</span>
@@ -128,14 +128,14 @@ export default function DealerPortalPage() {
 
         <div className="flex flex-wrap items-center gap-2.5">
           <Link href="/dealers/sri-venkateswara-car-hub-vizag" target="_blank">
-            <Button size="sm" variant="outline" className="gap-1.5 text-xs">
+            <Button size="sm" variant="outline" className="gap-1.5 text-xs border-blue-600 text-blue-600 hover:bg-blue-50">
               <span>View My Live Web Showroom</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </Button>
           </Link>
 
           <Link href="/sell/new">
-            <Button size="sm" className="gap-1.5 text-xs">
+            <Button size="sm" className="gap-1.5 text-xs bg-blue-600 hover:bg-blue-700 text-white shadow-xs">
               <Car className="w-4 h-4" />
               <span>Add Vehicle to Lot</span>
             </Button>
@@ -145,36 +145,36 @@ export default function DealerPortalPage() {
 
       {/* ── KPI Cards ────────────────────────────────────── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="rounded-2xl border border-muted/15 bg-surface p-5 space-y-1 shadow-xs">
+        <div className="rounded-2xl border border-slate-200/90 bg-white p-5 space-y-1 shadow-xs hover:border-blue-400 transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-muted font-medium">New Leads Pending</span>
+            <span className="text-xs text-slate-500 font-medium">New Leads Pending</span>
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
           </div>
-          <p className="text-2xl font-black text-primary font-tabular">
+          <p className="text-2xl font-black text-blue-600 font-tabular">
             {newLeadsCount}
           </p>
-          <span className="text-[11px] text-muted block">Direct buyer enquiries</span>
+          <span className="text-[11px] text-slate-500 block">Direct buyer enquiries</span>
         </div>
 
-        <div className="rounded-2xl border border-muted/15 bg-surface p-5 space-y-1 shadow-xs">
-          <span className="text-xs text-muted font-medium">Showroom Lot Stock</span>
-          <p className="text-2xl font-black text-ink font-tabular">
+        <div className="rounded-2xl border border-slate-200/90 bg-white p-5 space-y-1 shadow-xs hover:border-blue-400 transition-all">
+          <span className="text-xs text-slate-500 font-medium">Showroom Lot Stock</span>
+          <p className="text-2xl font-black text-slate-900 font-tabular">
             6 Cars
           </p>
           <span className="text-[11px] text-emerald-700 font-semibold block">100% 160-point verified</span>
         </div>
 
-        <div className="rounded-2xl border border-muted/15 bg-surface p-5 space-y-1 shadow-xs">
-          <span className="text-xs text-muted font-medium">Avg WhatsApp Response</span>
-          <p className="text-2xl font-black text-ink font-tabular">
+        <div className="rounded-2xl border border-slate-200/90 bg-white p-5 space-y-1 shadow-xs hover:border-blue-400 transition-all">
+          <span className="text-xs text-slate-500 font-medium">Avg WhatsApp Response</span>
+          <p className="text-2xl font-black text-slate-900 font-tabular">
             18 mins
           </p>
-          <span className="text-[11px] text-muted block">Target: Under 1 hour</span>
+          <span className="text-[11px] text-slate-500 block">Target: Under 1 hour</span>
         </div>
 
-        <div className="rounded-2xl border border-muted/15 bg-surface p-5 space-y-1 shadow-xs">
-          <span className="text-xs text-muted font-medium">Monthly Views</span>
-          <p className="text-2xl font-black text-ink font-tabular">
+        <div className="rounded-2xl border border-slate-200/90 bg-white p-5 space-y-1 shadow-xs hover:border-blue-400 transition-all">
+          <span className="text-xs text-slate-500 font-medium">Monthly Views</span>
+          <p className="text-2xl font-black text-slate-900 font-tabular">
             3,420
           </p>
           <span className="text-[11px] text-emerald-700 font-semibold block">&uarr; 28% from Coastal AP</span>
@@ -183,13 +183,13 @@ export default function DealerPortalPage() {
 
       {/* ── Buyer Inquiries Pipeline ─────────────────────── */}
       <div className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-muted/15 pb-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200/90 pb-3">
           <div className="flex items-center gap-2">
-            <Inbox className="w-4 h-4 text-primary" />
-            <h2 className="text-base font-bold text-ink">
+            <Inbox className="w-4 h-4 text-blue-600" />
+            <h2 className="text-base font-bold text-slate-900">
               Incoming Buyer Enquiries (Andhra Pradesh)
             </h2>
-            <span className="rounded-full bg-primary/10 text-primary text-xs font-bold px-2 py-0.5">
+            <span className="rounded-full bg-blue-50 text-blue-700 text-xs font-bold px-2 py-0.5 border border-blue-200/60">
               {leads.length}
             </span>
           </div>
@@ -206,10 +206,10 @@ export default function DealerPortalPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`rounded-xl px-3 py-1 font-semibold transition-colors ${
+                className={`rounded-xl px-3 py-1 font-semibold transition-colors cursor-pointer ${
                   activeTab === tab.id
-                    ? "bg-primary text-white"
-                    : "bg-surface border border-muted/15 text-muted hover:text-ink"
+                    ? "bg-blue-600 text-white shadow-xs"
+                    : "bg-white border border-slate-200/90 text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                 }`}
               >
                 {tab.label}
@@ -229,13 +229,13 @@ export default function DealerPortalPage() {
             return (
               <div
                 key={lead.id}
-                className="rounded-2xl border border-muted/15 bg-surface p-5 space-y-4 hover:border-primary/40 transition-all shadow-xs"
+                className="rounded-2xl border border-slate-200/90 bg-white p-5 space-y-4 hover:border-blue-400 transition-all shadow-xs"
               >
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                   <div className="space-y-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-extrabold text-sm text-ink">{lead.buyerName}</span>
-                      <span className="text-xs text-muted">({lead.buyerLocation})</span>
+                      <span className="font-extrabold text-sm text-slate-900">{lead.buyerName}</span>
+                      <span className="text-xs text-slate-500">({lead.buyerLocation})</span>
                       {lead.status === "new" && (
                         <span className="rounded-full bg-red-100 text-red-700 text-[10px] font-bold px-2 py-0.5">
                           New Enquiry
@@ -247,26 +247,26 @@ export default function DealerPortalPage() {
                         </span>
                       )}
                     </div>
-                    <p className="text-xs font-semibold text-primary">
+                    <p className="text-xs font-semibold text-blue-600">
                       Interested In: {lead.carTitle} &bull; Asking: {formatPriceCompact(lead.carPrice)}
                     </p>
                   </div>
 
-                  <span className="text-[11px] text-muted shrink-0">
+                  <span className="text-[11px] text-slate-500 shrink-0">
                     Received {formatRelativeTime(lead.createdAt)}
                   </span>
                 </div>
 
                 {/* Message Quote */}
-                <div className="rounded-xl bg-canvas p-3 text-xs text-ink/90 border border-muted/10 italic">
+                <div className="rounded-xl bg-slate-50 p-3 text-xs text-slate-800 border border-slate-200/80 italic">
                   &ldquo;{lead.message}&rdquo;
                 </div>
 
                 {/* Action Bar */}
-                <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-muted/10">
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100">
                   <div className="flex flex-wrap items-center gap-2">
                     <a href={waUrl} target="_blank" rel="noopener noreferrer">
-                      <Button size="sm" className="gap-1.5 text-xs bg-[#25D366] hover:bg-[#1EBE5D] text-white border-none">
+                      <Button size="sm" className="gap-1.5 text-xs bg-emerald-600 hover:bg-emerald-700 text-white border-none shadow-xs">
                         <MessageCircle className="w-3.5 h-3.5" />
                         <span>Reply on WhatsApp</span>
                       </Button>
@@ -274,21 +274,21 @@ export default function DealerPortalPage() {
 
                     <a href={`tel:${lead.buyerPhone.replace(/\s+/g, "")}`}>
                       <Button size="sm" variant="secondary" className="gap-1.5 text-xs">
-                        <PhoneCall className="w-3.5 h-3.5 text-primary" />
+                        <PhoneCall className="w-3.5 h-3.5 text-blue-600" />
                         <span>Call {lead.buyerPhone}</span>
                       </Button>
                     </a>
                   </div>
 
                   {/* Status update pipeline */}
-                  <div className="flex items-center gap-1.5 text-xs text-muted">
+                  <div className="flex items-center gap-1.5 text-xs text-slate-500">
                     <span className="text-[11px]">Move stage:</span>
                     <select
                       value={lead.status}
                       onChange={(e) =>
                         handleUpdateStatus(lead.id, e.target.value as Lead["status"])
                       }
-                      className="rounded-lg bg-canvas border border-muted/20 px-2 py-1 text-xs font-semibold text-ink focus:outline-none"
+                      className="rounded-lg bg-slate-50 border border-slate-200 px-2 py-1 text-xs font-semibold text-slate-900 focus:outline-none cursor-pointer"
                     >
                       <option value="new">New</option>
                       <option value="contacted">Contacted</option>

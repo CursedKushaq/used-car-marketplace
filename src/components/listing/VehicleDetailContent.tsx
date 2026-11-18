@@ -104,23 +104,23 @@ export const VehicleDetailContent: React.FC<VehicleDetailContentProps> = ({
 
           {/* Quick specs pill grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="rounded-xl border border-muted/15 bg-surface p-3.5 space-y-0.5">
-              <span className="text-[11px] font-semibold text-muted uppercase">Year</span>
-              <p className="text-sm font-bold text-ink">{listing.year}</p>
+            <div className="rounded-xl border border-slate-200/90 bg-slate-50 p-3.5 space-y-0.5">
+              <span className="text-[11px] font-semibold text-slate-500 uppercase">Year</span>
+              <p className="text-sm font-bold text-slate-900">{listing.year}</p>
             </div>
-            <div className="rounded-xl border border-muted/15 bg-surface p-3.5 space-y-0.5">
-              <span className="text-[11px] font-semibold text-muted uppercase">Kilometres</span>
-              <p className="text-sm font-bold text-ink">{formatKm(listing.km)}</p>
+            <div className="rounded-xl border border-slate-200/90 bg-slate-50 p-3.5 space-y-0.5">
+              <span className="text-[11px] font-semibold text-slate-500 uppercase">Kilometres</span>
+              <p className="text-sm font-bold text-slate-900">{formatKm(listing.km)}</p>
             </div>
-            <div className="rounded-xl border border-muted/15 bg-surface p-3.5 space-y-0.5">
-              <span className="text-[11px] font-semibold text-muted uppercase">Fuel &amp; Gear</span>
-              <p className="text-sm font-bold text-ink capitalize">
+            <div className="rounded-xl border border-slate-200/90 bg-slate-50 p-3.5 space-y-0.5">
+              <span className="text-[11px] font-semibold text-slate-500 uppercase">Fuel &amp; Gear</span>
+              <p className="text-sm font-bold text-slate-900 capitalize">
                 {listing.fuel} / {listing.transmission}
               </p>
             </div>
-            <div className="rounded-xl border border-muted/15 bg-surface p-3.5 space-y-0.5">
-              <span className="text-[11px] font-semibold text-muted uppercase">Ownership</span>
-              <p className="text-sm font-bold text-ink">
+            <div className="rounded-xl border border-slate-200/90 bg-slate-50 p-3.5 space-y-0.5">
+              <span className="text-[11px] font-semibold text-slate-500 uppercase">Ownership</span>
+              <p className="text-sm font-bold text-slate-900">
                 {formatOwnership(listing.owners)}
               </p>
             </div>
@@ -129,32 +129,32 @@ export const VehicleDetailContent: React.FC<VehicleDetailContentProps> = ({
 
         {/* Right Column: Title, Pricing & Sticky Action Card (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="rounded-2xl border border-muted/20 bg-surface p-6 shadow-sm space-y-5">
+          <div className="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm space-y-5">
             {/* Title Block */}
             <div className="space-y-1.5">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-md uppercase tracking-wider">
+                <span className="text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200/80 px-2.5 py-0.5 rounded-md uppercase tracking-wider">
                   {listing.registrationState} Reg
                 </span>
-                <span className="text-xs text-muted font-medium flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-muted" />
+                <span className="text-xs text-slate-500 font-medium flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5 text-slate-400" />
                   {listing.locality}, {listing.city}
                 </span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink">
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
                 {listing.title}
               </h1>
-              <p className="text-sm font-medium text-muted">{listing.variant}</p>
+              <p className="text-sm font-medium text-slate-500">{listing.variant}</p>
             </div>
 
             {/* Price Box */}
-            <div className="rounded-xl bg-canvas p-4.5 border border-muted/15 space-y-3">
+            <div className="rounded-xl bg-slate-50 p-4.5 border border-slate-200/90 space-y-3">
               <div className="flex items-baseline justify-between">
                 <div>
-                  <span className="text-3xl font-black text-ink font-tabular">
+                  <span className="text-3xl font-black text-slate-900 font-tabular">
                     {formatPriceCompact(listing.priceInr)}
                   </span>
-                  <span className="block text-xs text-muted font-medium mt-0.5">
+                  <span className="block text-xs text-slate-500 font-medium mt-0.5">
                     ({formatCurrency(listing.priceInr)})
                   </span>
                 </div>
@@ -165,14 +165,14 @@ export const VehicleDetailContent: React.FC<VehicleDetailContentProps> = ({
               </div>
 
               {/* CarDekho / CarWale Style EMI Pill */}
-              <div className="flex items-center justify-between text-xs pt-2 border-t border-muted/10">
-                <span className="text-muted font-medium">Estimated Monthly EMI:</span>
-                <span className="font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-md">
+              <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-200/60">
+                <span className="text-slate-600 font-medium">Estimated Monthly EMI:</span>
+                <span className="font-extrabold text-blue-800 bg-blue-50 border border-blue-200/80 px-2.5 py-0.5 rounded-md">
                   {formatEstimatedEmi(listing.priceInr)}
                 </span>
               </div>
 
-              <p className="text-[11px] text-muted leading-tight border-t border-muted/10 pt-2">
+              <p className="text-[11px] text-slate-500 leading-tight border-t border-slate-200/60 pt-2">
                 Transfer fees &amp; RTO road tax are paid directly to the authority and not included in asking price.
               </p>
             </div>
@@ -190,7 +190,7 @@ export const VehicleDetailContent: React.FC<VehicleDetailContentProps> = ({
                 >
                   <Button
                     size="lg"
-                    className="w-full gap-2 text-sm sm:text-base font-bold bg-[#25D366] hover:bg-[#1EBE5D] text-white border-none shadow-md cursor-pointer"
+                    className="w-full gap-2 text-sm sm:text-base font-bold bg-emerald-600 hover:bg-emerald-700 text-white border-none shadow-md cursor-pointer"
                   >
                     <MessageCircle className="w-5 h-5" />
                     <span>Chat with Showroom on WhatsApp</span>
@@ -204,7 +204,7 @@ export const VehicleDetailContent: React.FC<VehicleDetailContentProps> = ({
                 onClick={() => setEnquiryModalOpen(true)}
                 className="w-full gap-2 text-sm sm:text-base font-bold shadow-xs cursor-pointer"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-4 h-4 text-blue-600" />
                 <span>Check Availability &amp; Unlock Phone</span>
               </Button>
 
@@ -212,11 +212,10 @@ export const VehicleDetailContent: React.FC<VehicleDetailContentProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsSaved(!isSaved)}
-                  className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
-                    isSaved
+                  className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${isSaved
                       ? "bg-red-50 border-red-200 text-red-600"
-                      : "bg-surface border-muted/20 text-ink hover:bg-canvas"
-                  }`}
+                      : "bg-white border-slate-200/90 text-slate-700 hover:bg-slate-50"
+                    }`}
                 >
                   <Heart className={`w-4 h-4 ${isSaved ? "fill-red-500" : ""}`} />
                   <span>{isSaved ? "Saved" : "Save"}</span>
@@ -225,11 +224,10 @@ export const VehicleDetailContent: React.FC<VehicleDetailContentProps> = ({
                 <button
                   type="button"
                   onClick={() => toggleCompare(listing.id)}
-                  className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
-                    comparing
-                      ? "bg-primary/10 border-primary text-primary"
-                      : "bg-surface border-muted/20 text-ink hover:bg-canvas"
-                  }`}
+                  className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${comparing
+                      ? "bg-blue-50 border-blue-600 text-blue-700 font-bold"
+                      : "bg-white border-slate-200/90 text-slate-700 hover:bg-slate-50"
+                    }`}
                 >
                   <GitCompare className="w-4 h-4" />
                   <span>{comparing ? "Comparing" : "Compare"}</span>
@@ -238,7 +236,7 @@ export const VehicleDetailContent: React.FC<VehicleDetailContentProps> = ({
                 <button
                   type="button"
                   onClick={handleShare}
-                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-muted/20 bg-surface text-xs font-semibold text-ink hover:bg-canvas transition-colors cursor-pointer"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-slate-200/90 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
                 >
                   <Share2 className="w-4 h-4" />
                   <span>Share</span>

@@ -5,43 +5,43 @@ import { MAJOR_INDIAN_CITIES, POPULAR_INDIAN_MAKES } from "@/server/modules/cata
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="border-t border-muted/15 bg-surface text-ink mt-20">
+    <footer className="border-t border-slate-800 bg-[#0B1120] text-slate-300 mt-20">
       {/* ── Trust Banner ────────────────────────────────── */}
-      <div className="border-b border-muted/10 bg-canvas/60 py-8">
+      <div className="border-b border-slate-800/80 bg-[#0F172A] py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center sm:text-left">
-            <div className="flex items-center gap-3 justify-center sm:justify-start">
-              <div className="p-2.5 rounded-xl bg-primary/10 text-primary shrink-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-center sm:text-left">
+            <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-slate-800/40 border border-slate-700/50">
+              <div className="p-2.5 rounded-xl bg-blue-500/10 text-blue-400 shrink-0">
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-bold text-sm text-ink">5-Point Verification Ladder</h4>
-                <p className="text-xs text-muted mt-0.5">
+                <h4 className="font-bold text-sm text-white">5-Point Verification Ladder</h4>
+                <p className="text-xs text-slate-400 mt-0.5">
                   Every check is labeled: Declared, Document Seen, or Partner Checked.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 justify-center sm:justify-start">
-              <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-700 shrink-0">
+            <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-slate-800/40 border border-slate-700/50">
+              <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 shrink-0">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-bold text-sm text-ink">Unbiased Price Ratings</h4>
-                <p className="text-xs text-muted mt-0.5">
-                  Algorithm compares asking prices against regional market comparables.
+                <h4 className="font-bold text-sm text-white">Unbiased Price Ratings</h4>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Algorithm compares asking prices against regional AP market comparables.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 justify-center sm:justify-start">
-              <div className="p-2.5 rounded-xl bg-orange-50 text-orange-700 shrink-0">
+            <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-slate-800/40 border border-slate-700/50">
+              <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 shrink-0">
                 <Lock className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-bold text-sm text-ink">Private-by-Default Enquiries</h4>
-                <p className="text-xs text-muted mt-0.5">
-                  Seller numbers revealed only after verified OTP; zero lead spam.
+                <h4 className="font-bold text-sm text-white">Private-by-Default Enquiries</h4>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Seller numbers revealed only after verified OTP; zero telemarketing spam.
                 </p>
               </div>
             </div>
@@ -54,56 +54,56 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           {/* Brand Col */}
           <div className="col-span-2 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-white">
+            <Link href="/" className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-xs">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <span className="text-xl font-bold tracking-tight text-ink">
+              <span className="text-xl font-extrabold tracking-tight text-white">
                 AutoBazaar
               </span>
             </Link>
-            <p className="mt-3 text-xs text-muted leading-relaxed max-w-sm">
-              India&apos;s trust-first used car marketplace. Empowering buyers and sellers with objective price transparency, 160-point inspection data, and privacy-first contact.
+            <p className="mt-3 text-xs text-slate-400 leading-relaxed max-w-sm">
+              India&apos;s trust-first used car marketplace. Empowering Andhra Pradesh dealers and buyers with objective price transparency, 160-point inspection data, and privacy-first contact.
             </p>
-            <div className="mt-4 flex items-center gap-2 text-[11px] text-muted">
-              <span className="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span>Certified Inspection & Fair Pricing Standards</span>
+            <div className="mt-4 flex items-center gap-2 text-[11px] text-slate-400">
+              <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="text-slate-300 font-medium">Certified Inspection &amp; Fair Pricing Standards</span>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-wider text-muted mb-3">
+            <h4 className="font-bold text-xs uppercase tracking-wider text-slate-300 mb-3">
               Marketplace
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/used-cars" className="text-muted hover:text-ink">
+                <Link href="/used-cars" className="text-slate-400 hover:text-white transition-colors">
                   Browse All Cars
                 </Link>
               </li>
               <li>
-                <Link href="/sell" className="text-muted hover:text-ink">
+                <Link href="/sell" className="text-slate-400 hover:text-white transition-colors">
                   Sell Your Car
                 </Link>
               </li>
               <li>
-                <Link href="/compare" className="text-muted hover:text-ink">
+                <Link href="/compare" className="text-slate-400 hover:text-white transition-colors">
                   Compare Vehicles
                 </Link>
               </li>
               <li>
-                <Link href="/account/saved" className="text-muted hover:text-ink">
+                <Link href="/account/saved" className="text-slate-400 hover:text-white transition-colors">
                   Saved Shortlist
                 </Link>
               </li>
               <li>
-                <Link href="/dealers" className="text-muted hover:text-ink">
-                  Verified Dealers
+                <Link href="/dealers" className="text-slate-400 hover:text-white transition-colors">
+                  Verified AP Dealers
                 </Link>
               </li>
               <li>
-                <Link href="/dealer" className="text-muted hover:text-ink">
+                <Link href="/dealer" className="text-blue-400 hover:text-blue-300 font-semibold transition-colors">
                   Dealer Portal Console
                 </Link>
               </li>
@@ -112,7 +112,7 @@ export const Footer: React.FC = () => {
 
           {/* Popular Cities */}
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-wider text-muted mb-3">
+            <h4 className="font-bold text-xs uppercase tracking-wider text-slate-300 mb-3">
               Used Cars by City
             </h4>
             <ul className="space-y-2 text-xs">
@@ -120,7 +120,7 @@ export const Footer: React.FC = () => {
                 <li key={city}>
                   <Link
                     href={`/used-cars?city=${encodeURIComponent(city)}`}
-                    className="text-muted hover:text-ink transition-colors"
+                    className="text-slate-400 hover:text-white transition-colors"
                   >
                     Used Cars in {city}
                   </Link>
@@ -131,7 +131,7 @@ export const Footer: React.FC = () => {
 
           {/* Popular Brands */}
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-wider text-muted mb-3">
+            <h4 className="font-bold text-xs uppercase tracking-wider text-slate-300 mb-3">
               Popular Brands
             </h4>
             <ul className="space-y-2 text-xs">
@@ -139,7 +139,7 @@ export const Footer: React.FC = () => {
                 <li key={make}>
                   <Link
                     href={`/used-cars?make=${encodeURIComponent(make)}`}
-                    className="text-muted hover:text-ink transition-colors"
+                    className="text-slate-400 hover:text-white transition-colors"
                   >
                     Used {make} Cars
                   </Link>
@@ -150,42 +150,42 @@ export const Footer: React.FC = () => {
 
           {/* Trust & Legal */}
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-wider text-muted mb-3">
+            <h4 className="font-bold text-xs uppercase tracking-wider text-slate-300 mb-3">
               Trust & Legal
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/how-we-verify" className="text-muted hover:text-ink">
+                <Link href="/how-we-verify" className="text-slate-400 hover:text-white transition-colors">
                   How We Verify
                 </Link>
               </li>
               <li>
-                <Link href="/how-price-ratings-work" className="text-muted hover:text-ink">
+                <Link href="/how-price-ratings-work" className="text-slate-400 hover:text-white transition-colors">
                   Price Rating Methodology
                 </Link>
               </li>
               <li>
-                <Link href="/safety" className="text-muted hover:text-ink">
-                  Scam & Fraud Safety
+                <Link href="/safety" className="text-slate-400 hover:text-white transition-colors">
+                  Scam &amp; Fraud Safety
                 </Link>
               </li>
               <li>
-                <Link href="/guides" className="text-muted hover:text-ink">
-                  RC Transfer & Advice
+                <Link href="/guides" className="text-slate-400 hover:text-white transition-colors">
+                  RC Transfer &amp; Advice
                 </Link>
               </li>
               <li>
-                <Link href="/legal/privacy" className="text-muted hover:text-ink">
+                <Link href="/legal/privacy" className="text-slate-400 hover:text-white transition-colors">
                   Privacy Notice (DPDP)
                 </Link>
               </li>
               <li>
-                <Link href="/legal/terms" className="text-muted hover:text-ink">
+                <Link href="/legal/terms" className="text-slate-400 hover:text-white transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/legal/grievance" className="text-muted hover:text-ink">
+                <Link href="/legal/grievance" className="text-slate-400 hover:text-white transition-colors">
                   Grievance Redressal
                 </Link>
               </li>
@@ -194,7 +194,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* ── Sub Footer & DPDP Notice ────────────────────── */}
-        <div className="mt-12 pt-6 border-t border-muted/10 flex flex-col sm:flex-row items-center justify-between text-xs text-muted gap-4">
+        <div className="mt-12 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>
             &copy; {new Date().getFullYear()} AutoBazaar Technologies India Pvt. Ltd. All rights reserved.
           </p>
@@ -202,7 +202,7 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-4 text-xs">
             <span>DPDP Act 2025/2027 Compliant</span>
             <span>&bull;</span>
-            <Link href="/legal/privacy" className="hover:underline">
+            <Link href="/legal/privacy" className="hover:text-slate-300 transition-colors">
               Your Data Rights
             </Link>
           </div>

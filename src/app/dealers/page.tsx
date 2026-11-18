@@ -43,42 +43,42 @@ export default function DealersDirectoryPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 space-y-10">
       {/* ── Page Header ─────────────────────────────────── */}
-      <div className="border-b border-muted/15 pb-6 space-y-3">
-        <div className="inline-flex items-center gap-1.5 text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full uppercase tracking-wider">
+      <div className="border-b border-slate-200/90 pb-6 space-y-3">
+        <div className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200/80 px-3 py-1 rounded-full uppercase tracking-wider">
           <ShieldCheck className="w-4 h-4" />
           <span>Andhra Pradesh Verified Dealer Network</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-ink">
+        <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">
           Verified Pre-Owned Dealerships
         </h1>
-        <p className="text-xs sm:text-sm text-muted max-w-2xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
           Browse certified multi-brand used car showrooms across Visakhapatnam, Vijayawada, Guntur, Tirupati, and Coastal Andhra. Every partner dealer provides AP RTO smart card transfer guarantees and verified 160-point inspection records.
         </p>
       </div>
 
       {/* ── Callout Banner for Dealership Owners ─────────── */}
-      <div className="rounded-3xl bg-gradient-to-r from-primary via-[#074747] to-canvas text-white p-6 sm:p-8 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="rounded-3xl bg-gradient-to-r from-blue-600 via-blue-700 to-slate-900 text-white p-6 sm:p-8 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-2 max-w-xl">
-          <div className="flex items-center gap-2 text-teal-200 text-xs font-bold uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-blue-200 text-xs font-bold uppercase tracking-wider">
             <Sparkles className="w-4 h-4" />
             <span>Are you a used car dealer in Andhra Pradesh?</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold">
             Take Your Dealership Online with AutoBazaar
           </h2>
-          <p className="text-xs text-teal-100/90 leading-relaxed">
+          <p className="text-xs text-blue-100/90 leading-relaxed">
             Get your own branded digital showroom, receive verified buyer enquiries directly on WhatsApp, and manage your inventory with our dealer console.
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
           <Link href="/dealers/sri-venkateswara-car-hub-vizag">
-            <Button size="md" className="w-full bg-white text-primary hover:bg-canvas">
+            <Button size="md" className="w-full bg-white text-blue-700 hover:bg-slate-100 font-bold shadow-md">
               See Sample Showroom
             </Button>
           </Link>
           <Link href="/dealer">
-            <Button size="md" variant="outline" className="w-full text-white border-white/50 hover:bg-white/10">
+            <Button size="md" variant="outline" className="w-full text-white border-white/60 hover:bg-white/10 font-bold">
               Open Dealer Console
             </Button>
           </Link>

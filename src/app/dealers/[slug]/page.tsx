@@ -103,15 +103,15 @@ export default async function DealerDetailPage({ params }: DealerPageProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl border border-muted/20 bg-surface shadow-md">
           {/* Cover Header Banner */}
-          <div className="relative h-48 sm:h-64 w-full bg-gradient-to-r from-primary via-[#085252] to-canvas overflow-hidden">
+          <div className="relative h-48 sm:h-64 w-full bg-gradient-to-r from-slate-950 via-blue-950 to-slate-900 overflow-hidden">
             {profile.bannerUrl && (
               <img
                 src={profile.bannerUrl}
                 alt={`${profile.name} Showroom`}
-                className="w-full h-full object-cover opacity-25 mix-blend-overlay"
+                className="w-full h-full object-cover opacity-35 mix-blend-overlay"
               />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
 
             <div className="absolute top-4 right-4 z-10 flex gap-2">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600/90 backdrop-blur-md px-3.5 py-1 text-xs font-bold text-white shadow-sm">
@@ -125,18 +125,18 @@ export default async function DealerDetailPage({ params }: DealerPageProps) {
           <div className="relative px-6 pb-6 pt-0 sm:px-8">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 -mt-16 sm:-mt-20 mb-6">
               <div className="flex items-end gap-4">
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-surface border-4 border-surface shadow-xl flex items-center justify-center text-primary shrink-0 overflow-hidden">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-white border-4 border-white shadow-xl flex items-center justify-center text-blue-600 shrink-0 overflow-hidden">
                   <Building2 className="w-12 h-12" />
                 </div>
                 <div className="space-y-1 pb-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-ink">
+                    <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">
                       {profile.name}
                     </h1>
-                    <BadgeCheck className="w-6 h-6 text-primary fill-primary/10" />
+                    <BadgeCheck className="w-6 h-6 text-blue-600 fill-blue-50" />
                   </div>
-                  <p className="text-xs sm:text-sm text-muted flex items-center gap-1.5">
-                    <MapPin className="w-4 h-4 text-primary shrink-0" />
+                  <p className="text-xs sm:text-sm text-slate-500 flex items-center gap-1.5">
+                    <MapPin className="w-4 h-4 text-blue-600 shrink-0" />
                     <span>{profile.locality}, {profile.city}, Andhra Pradesh</span>
                   </p>
                 </div>
@@ -238,49 +238,49 @@ export default async function DealerDetailPage({ params }: DealerPageProps) {
       {/* ── Dealership Trust Guarantees ──────────────────── */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="rounded-2xl border border-muted/15 bg-surface p-4 flex items-start gap-3">
-            <div className="p-2.5 rounded-xl bg-primary/10 text-primary shrink-0">
+          <div className="rounded-2xl border border-slate-200/90 bg-white p-4 flex items-start gap-3 shadow-xs">
+            <div className="p-2.5 rounded-xl bg-blue-50 text-blue-700 shrink-0">
               <FileCheck2 className="w-5 h-5" />
             </div>
             <div className="space-y-0.5">
-              <h4 className="font-bold text-xs text-ink">AP RTO Transfer Guarantee</h4>
-              <p className="text-[11px] text-muted leading-relaxed">
+              <h4 className="font-bold text-xs text-slate-900">AP RTO Transfer Guarantee</h4>
+              <p className="text-[11px] text-slate-500 leading-relaxed">
                 Form 29 &amp; 30 paperwork handled end-to-end until smart card RC delivery.
               </p>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-muted/15 bg-surface p-4 flex items-start gap-3">
-            <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-800 shrink-0">
+          <div className="rounded-2xl border border-slate-200/90 bg-white p-4 flex items-start gap-3 shadow-xs">
+            <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-700 shrink-0">
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <div className="space-y-0.5">
-              <h4 className="font-bold text-xs text-ink">160-Point Certified Lot</h4>
-              <p className="text-[11px] text-muted leading-relaxed">
+              <h4 className="font-bold text-xs text-slate-900">160-Point Certified Lot</h4>
+              <p className="text-[11px] text-slate-500 leading-relaxed">
                 Zero flood damage, zero accidental frame repairs, verified authentic odometer.
               </p>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-muted/15 bg-surface p-4 flex items-start gap-3">
-            <div className="p-2.5 rounded-xl bg-teal-100 text-teal-800 shrink-0">
+          <div className="rounded-2xl border border-slate-200/90 bg-white p-4 flex items-start gap-3 shadow-xs">
+            <div className="p-2.5 rounded-xl bg-blue-50 text-blue-700 shrink-0">
               <Building2 className="w-5 h-5" />
             </div>
             <div className="space-y-0.5">
-              <h4 className="font-bold text-xs text-ink">Bank Loan Approvals</h4>
-              <p className="text-[11px] text-muted leading-relaxed">
+              <h4 className="font-bold text-xs text-slate-900">Bank Loan Approvals</h4>
+              <p className="text-[11px] text-slate-500 leading-relaxed">
                 Tie-ups with SBI, HDFC, Sundaram Finance, and Chola with spot loan sanctions.
               </p>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-muted/15 bg-surface p-4 flex items-start gap-3">
-            <div className="p-2.5 rounded-xl bg-orange-100 text-orange-800 shrink-0">
+          <div className="rounded-2xl border border-slate-200/90 bg-white p-4 flex items-start gap-3 shadow-xs">
+            <div className="p-2.5 rounded-xl bg-amber-50 text-amber-700 shrink-0">
               <Car className="w-5 h-5" />
             </div>
             <div className="space-y-0.5">
-              <h4 className="font-bold text-xs text-ink">Old Car Exchange</h4>
-              <p className="text-[11px] text-muted leading-relaxed">
+              <h4 className="font-bold text-xs text-slate-900">Old Car Exchange</h4>
+              <p className="text-[11px] text-slate-500 leading-relaxed">
                 Spot valuation and trade-in bonus when upgrading your current vehicle.
               </p>
             </div>

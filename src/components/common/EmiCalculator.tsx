@@ -33,27 +33,27 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
   const downPayment = Math.max(0, initialPrice - loanAmount);
 
   return (
-    <div className="rounded-3xl border border-muted/15 bg-surface p-6 sm:p-8 shadow-sm space-y-6">
+    <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-sm space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-muted/10 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-5">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full mb-1">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200/80 px-2.5 py-0.5 rounded-full mb-1.5">
             <Calculator className="w-3.5 h-3.5" />
             <span>Used Car Finance Planner</span>
           </div>
-          <h3 className="text-xl sm:text-2xl font-black text-ink">
+          <h3 className="text-xl sm:text-2xl font-black text-slate-900">
             {carTitle ? `Estimate EMI for ${carTitle}` : "Interactive Used Car EMI Calculator"}
           </h3>
-          <p className="text-xs text-muted mt-0.5">
+          <p className="text-xs text-slate-500 mt-0.5">
             Compare monthly installments with instant approvals from SBI, HDFC, Sundaram &amp; Chola
           </p>
         </div>
 
-        <div className="text-right bg-primary/5 rounded-2xl p-4 border border-primary/15">
-          <span className="text-xs text-muted block font-medium">Estimated Monthly EMI</span>
-          <span className="text-2xl sm:text-3xl font-black text-primary font-tabular">
+        <div className="text-right bg-blue-50/80 rounded-2xl p-4 border border-blue-200/80">
+          <span className="text-xs text-slate-500 block font-medium">Estimated Monthly EMI</span>
+          <span className="text-2xl sm:text-3xl font-black text-blue-700 font-tabular">
             {formatCurrency(monthlyEmi)}
-            <span className="text-xs font-semibold text-muted">/month</span>
+            <span className="text-xs font-semibold text-slate-500">/month</span>
           </span>
         </div>
       </div>
@@ -64,8 +64,8 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
           {/* Slider 1: Loan Amount */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <label htmlFor="loan-amount" className="font-bold text-ink">Loan Amount</label>
-              <span className="font-extrabold text-primary text-sm font-tabular">
+              <label htmlFor="loan-amount" className="font-bold text-slate-900">Loan Amount</label>
+              <span className="font-extrabold text-blue-600 text-sm font-tabular">
                 {formatCurrency(loanAmount)}
               </span>
             </div>
@@ -78,9 +78,9 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
               value={loanAmount}
               onChange={(e) => setLoanAmount(Number(e.target.value))}
               aria-label="Loan Amount in Rupees"
-              className="w-full accent-primary h-2 bg-canvas rounded-lg cursor-pointer"
+              className="w-full accent-blue-600 h-2 bg-slate-100 rounded-lg cursor-pointer"
             />
-            <div className="flex justify-between text-[11px] text-muted">
+            <div className="flex justify-between text-[11px] text-slate-500 font-medium">
               <span>Min: ₹1 Lakh</span>
               <span>Down Payment: {formatCurrency(downPayment)}</span>
               <span>Max: {formatCurrency(Math.max(initialPrice, 3000000))}</span>
@@ -90,8 +90,8 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
           {/* Slider 2: Interest Rate */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <label htmlFor="interest-rate" className="font-bold text-ink">Annual Interest Rate (%)</label>
-              <span className="font-extrabold text-ink text-sm font-tabular">
+              <label htmlFor="interest-rate" className="font-bold text-slate-900">Annual Interest Rate (%)</label>
+              <span className="font-extrabold text-slate-900 text-sm font-tabular">
                 {interestRate}% p.a.
               </span>
             </div>
@@ -104,9 +104,9 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
               value={interestRate}
               onChange={(e) => setInterestRate(Number(e.target.value))}
               aria-label="Annual Interest Rate percentage"
-              className="w-full accent-primary h-2 bg-canvas rounded-lg cursor-pointer"
+              className="w-full accent-blue-600 h-2 bg-slate-100 rounded-lg cursor-pointer"
             />
-            <div className="flex justify-between text-[11px] text-muted">
+            <div className="flex justify-between text-[11px] text-slate-500 font-medium">
               <span>8.5% (Prime Bank Rate)</span>
               <span>Average: 9.5%</span>
               <span>16.0% (NBFC)</span>
@@ -116,8 +116,8 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
           {/* Slider 3: Loan Tenure */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <label htmlFor="loan-tenure" className="font-bold text-ink">Loan Tenure</label>
-              <span className="font-extrabold text-ink text-sm font-tabular">
+              <label htmlFor="loan-tenure" className="font-bold text-slate-900">Loan Tenure</label>
+              <span className="font-extrabold text-slate-900 text-sm font-tabular">
                 {tenureYears} Years ({tenureYears * 12} Months)
               </span>
             </div>
@@ -127,10 +127,10 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
                   key={years}
                   type="button"
                   onClick={() => setTenureYears(years)}
-                  className={`py-2 rounded-xl text-xs font-bold transition-all ${
+                  className={`py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     tenureYears === years
-                      ? "bg-primary text-white shadow-xs"
-                      : "bg-canvas border border-muted/15 text-muted hover:text-ink"
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "bg-slate-100 border border-slate-200/80 text-slate-600 hover:text-slate-900 hover:bg-slate-200/70"
                   }`}
                 >
                   {years} Yrs
@@ -140,29 +140,29 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
           </div>
         </div>
 
-        {/* Breakdown Card (5 cols) */}
-        <div className="lg:col-span-5 rounded-2xl bg-canvas border border-muted/15 p-5 space-y-4">
-          <h4 className="font-bold text-xs uppercase tracking-wider text-muted">
+        {/* Breakdown Card (5 cols) - Midnight Slate Anchor Card */}
+        <div className="lg:col-span-5 rounded-2xl bg-slate-900 text-white border border-slate-800 p-5 sm:p-6 space-y-4 shadow-md">
+          <h4 className="font-bold text-xs uppercase tracking-wider text-slate-400">
             Repayment Summary Breakdown
           </h4>
 
           <div className="space-y-2.5 text-xs">
-            <div className="flex justify-between py-1.5 border-b border-muted/10">
-              <span className="text-muted">Principal Loan Amount</span>
-              <span className="font-bold text-ink">{formatCurrency(loanAmount)}</span>
+            <div className="flex justify-between py-1.5 border-b border-slate-800">
+              <span className="text-slate-400">Principal Loan Amount</span>
+              <span className="font-bold text-white">{formatCurrency(loanAmount)}</span>
             </div>
-            <div className="flex justify-between py-1.5 border-b border-muted/10">
-              <span className="text-muted">Total Interest Amount</span>
-              <span className="font-bold text-amber-900">{formatCurrency(totalInterest)}</span>
+            <div className="flex justify-between py-1.5 border-b border-slate-800">
+              <span className="text-slate-400">Total Interest Amount</span>
+              <span className="font-bold text-amber-400">{formatCurrency(totalInterest)}</span>
             </div>
-            <div className="flex justify-between py-1.5 border-b border-muted/10">
-              <span className="text-muted">Total Amount Payable</span>
-              <span className="font-extrabold text-ink">{formatCurrency(totalPayment)}</span>
+            <div className="flex justify-between py-1.5 border-b border-slate-800">
+              <span className="text-slate-400">Total Amount Payable</span>
+              <span className="font-extrabold text-blue-300 text-sm">{formatCurrency(totalPayment)}</span>
             </div>
           </div>
 
-          <div className="rounded-xl bg-surface p-3 border border-muted/10 flex items-center gap-2.5 text-[11px] text-muted">
-            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+          <div className="rounded-xl bg-slate-800/80 p-3 border border-slate-700/80 flex items-center gap-2.5 text-[11px] text-slate-300">
+            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>Pre-approved loan options with low processing fees and zero foreclosure charges after 12 months.</span>
           </div>
 
@@ -174,7 +174,7 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
             rel="noopener noreferrer"
             className="block w-full pt-1"
           >
-            <Button size="md" className="w-full text-xs font-bold gap-2">
+            <Button size="md" className="w-full text-xs font-bold gap-2 bg-blue-600 hover:bg-blue-500 text-white shadow-md shadow-blue-500/25">
               <Sparkles className="w-4 h-4" />
               <span>Apply for Low Interest Finance</span>
             </Button>

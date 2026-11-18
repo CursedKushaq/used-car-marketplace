@@ -2,21 +2,22 @@
 
 /*
  * Design Tokens — CSS Custom Properties
- * These mirror the Tailwind config and can be consumed by
- * components that sit outside the Tailwind layer (e.g. animations,
- * third-party widgets, or inline styles).
+ * Automotive minimalist palette:
+ * Slate-50 canvas, pure white card surfaces, precision cobalt blue primary,
+ * midnight slate contrast anchors, and emerald verification badges.
  */
 :root {
   /* ── Palette ─────────────────────────────────────── */
-  --color-ink: #101828;
-  --color-muted: #475467;
-  --color-canvas: #f6f5f2;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-canvas: #f8fafc;
   --color-surface: #ffffff;
-  --color-primary: #0b6e6e;
-  --color-accent: #c2410c;
-  --color-success: #15803d;
-  --color-warning: #b45309;
-  --color-danger: #b42318;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-accent: #d97706;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
 
   /* ── Typography ──────────────────────────────────── */
   --font-sans: "Noto Sans", ui-sans-serif, system-ui, sans-serif,
@@ -27,13 +28,16 @@
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
 
-  /* ── Shadows ─────────────────────────────────────── */
-  --shadow-sm: 0 1px 2px 0 rgb(16 24 40 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(16 24 40 / 0.1),
-    0 2px 4px -2px rgb(16 24 40 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(16 24 40 / 0.1),
-    0 4px 6px -4px rgb(16 24 40 / 0.1);
+  /* ── Shadows (subtle, airy, clean) ───────────────── */
+  --shadow-xs: 0 1px 2px 0 rgb(15 23 42 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(15 23 42 / 0.08),
+    0 1px 2px -1px rgb(15 23 42 / 0.08);
+  --shadow-md: 0 4px 6px -1px rgb(15 23 42 / 0.07),
+    0 2px 4px -2px rgb(15 23 42 / 0.07);
+  --shadow-lg: 0 10px 15px -3px rgb(15 23 42 / 0.08),
+    0 4px 6px -4px rgb(15 23 42 / 0.04);
 }
 
 /* ── Base resets ─────────────────────────────────────── */
