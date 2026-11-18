@@ -53,7 +53,7 @@ export const Footer: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           {/* Brand Col */}
-          <div className="col-span-2">
+          <div className="col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-white">
                 <ShieldCheck className="w-5 h-5" />
@@ -69,6 +69,45 @@ export const Footer: React.FC = () => {
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
               <span>Certified Inspection & Fair Pricing Standards</span>
             </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-bold text-xs uppercase tracking-wider text-muted mb-3">
+              Marketplace
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <Link href="/used-cars" className="text-muted hover:text-ink">
+                  Browse All Cars
+                </Link>
+              </li>
+              <li>
+                <Link href="/sell" className="text-muted hover:text-ink">
+                  Sell Your Car
+                </Link>
+              </li>
+              <li>
+                <Link href="/compare" className="text-muted hover:text-ink">
+                  Compare Vehicles
+                </Link>
+              </li>
+              <li>
+                <Link href="/account/saved" className="text-muted hover:text-ink">
+                  Saved Shortlist
+                </Link>
+              </li>
+              <li>
+                <Link href="/dealers" className="text-muted hover:text-ink">
+                  Verified Dealers
+                </Link>
+              </li>
+              <li>
+                <Link href="/dealer" className="text-muted hover:text-ink">
+                  Dealer Portal Console
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Popular Cities */}

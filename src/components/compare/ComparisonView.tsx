@@ -19,15 +19,75 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({ cars }) => {
   const [diffOnly, setDiffOnly] = useState(false);
 
   if (cars.length === 0) {
+    const popularComparisons = [
+      {
+        title: "Maruti Swift vs Hyundai Creta",
+        category: "Hatchback vs Compact SUV",
+        ids: "dl-swift-2021,mum-creta-2022",
+      },
+      {
+        title: "Hyundai Creta vs Kia Seltos",
+        category: "Segment Rivals • Mid-Size SUV",
+        ids: "mum-creta-2022,kol-seltos-2021",
+      },
+      {
+        title: "Mahindra Thar 4x4 vs Tata Nexon EV",
+        category: "Lifestyle 4x4 vs Electric SUV",
+        ids: "blr-thar-2023,hyd-nexon-2023",
+      },
+      {
+        title: "Honda City vs Volkswagen Virtus",
+        category: "Executive Sedans",
+        ids: "del-city-2020,gur-virtus-2023",
+      },
+    ];
+
     return (
-      <div className="mx-auto max-w-4xl px-4 py-16 text-center space-y-4">
-        <h2 className="text-2xl font-bold text-ink">No cars selected for comparison</h2>
-        <p className="text-sm text-muted">
-          Browse our verified inventory and click the &ldquo;Compare&rdquo; checkbox on up to {MAX_COMPARE_CARS} vehicles to view them side-by-side.
-        </p>
-        <Link href="/used-cars">
-          <Button className="mt-2">Browse Used Cars</Button>
-        </Link>
+      <div className="mx-auto max-w-4xl px-4 py-16 space-y-10">
+        <div className="text-center space-y-4">
+          <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto">
+            <Plus className="w-8 h-8" />
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-black text-ink">
+            Compare Used Cars Side-by-Side
+          </h2>
+          <p className="text-sm text-muted max-w-lg mx-auto leading-relaxed">
+            Select up to {MAX_COMPARE_CARS} vehicles using the &ldquo;Compare&rdquo; checkbox on any car card, or explore our popular head-to-head comparisons below.
+          </p>
+          <div className="pt-2">
+            <Link href="/used-cars">
+              <Button size="md" className="gap-2">
+                <span>Browse Inventory to Pick Cars</span>
+              </Button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Popular Comparisons Quick Picker */}
+        <div className="rounded-2xl border border-muted/15 bg-surface p-6 space-y-4 shadow-xs">
+          <h3 className="font-bold text-sm text-ink flex items-center gap-2">
+            <span>Popular Head-to-Head Comparisons in India:</span>
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {popularComparisons.map((item) => (
+              <Link
+                key={item.title}
+                href={`/compare?ids=${item.ids}`}
+                className="group flex items-center justify-between p-4 rounded-xl border border-muted/15 bg-canvas hover:border-primary hover:bg-surface transition-all"
+              >
+                <div>
+                  <h4 className="font-bold text-xs text-ink group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h4>
+                  <span className="text-[11px] text-muted">{item.category}</span>
+                </div>
+                <span className="text-xs font-bold text-primary group-hover:translate-x-1 transition-transform">
+                  Compare &rarr;
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCompare } from "../compare/CompareContext";
@@ -13,7 +13,11 @@ import {
   X,
   MapPin,
   GitCompare,
+  Heart,
   User,
+  Shield,
+  FileText,
+  Building2,
 } from "lucide-react";
 import { Button } from "../ui/Button";
 
@@ -22,6 +26,31 @@ export const Header: React.FC = () => {
   const { compareIds } = useCompare();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState<string>("All India");
+  const [savedCount, setSavedCount] = useState<number>(0);
+
+  useEffect(() => {
+    const updateSavedCount = () => {
+      try {
+        const stored = localStorage.getItem("autobazaar_saved_cars");
+        if (stored) {
+          const ids = JSON.parse(stored);
+          setSavedCount(Array.isArray(ids) ? ids.length : 0);
+        } else {
+          setSavedCount(0);
+        }
+      } catch {
+        setSavedCount(0);
+      }
+    };
+
+    updateSavedCount();
+    window.addEventListener("autobazaar_saved_updated", updateSavedCount);
+    window.addEventListener("storage", updateSavedCount);
+    return () => {
+      window.removeEventListener("autobazaar_saved_updated", updateSavedCount);
+      window.removeEventListener("storage", updateSavedCount);
+    };
+  }, []);
 
   const navLinks = [
     { label: "Browse Cars", href: "/used-cars" },
@@ -98,7 +127,21 @@ export const Header: React.FC = () => {
         </nav>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Saved Cars Link */}
+          <Link
+            href="/account/saved"
+            className="relative p-2 text-muted hover:text-red-500 transition-colors rounded-xl hover:bg-canvas"
+            title="Saved vehicles"
+          >
+            <Heart className={`w-5 h-5 ${savedCount > 0 ? "fill-red-500 text-red-500" : ""}`} />
+            {savedCount > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-xs">
+                {savedCount}
+              </span>
+            )}
+          </Link>
+
           {/* Compare Link */}
           <Link
             href={
@@ -106,12 +149,12 @@ export const Header: React.FC = () => {
                 ? `/compare?ids=${compareIds.join(",")}`
                 : "/compare"
             }
-            className="relative p-2 text-muted hover:text-ink transition-colors rounded-xl hover:bg-canvas"
+            className="relative p-2 text-muted hover:text-primary transition-colors rounded-xl hover:bg-canvas"
             title="Compare vehicles"
           >
             <GitCompare className="w-5 h-5" />
             {compareIds.length > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-white shadow-xs">
+              <span className="absolute -top-1 -right-1 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white shadow-xs">
                 {compareIds.length}
               </span>
             )}
@@ -140,7 +183,7 @@ export const Header: React.FC = () => {
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-muted/15 bg-surface px-4 pt-3 pb-6 space-y-3 animate-in slide-in-from-top-2">
           <div className="py-2 border-b border-muted/10">
-            <label className="text-xs text-muted block mb-1">Location:</label>
+            <label className="text-xs text-muted block mb-1">Select City:</label>
             <select
               value={selectedCity}
               onChange={(e) => {
@@ -171,16 +214,66 @@ export const Header: React.FC = () => {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2.5 rounded-xl text-base font-semibold text-ink hover:bg-canvas transition-colors"
+                className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-ink hover:bg-canvas transition-colors"
               >
                 {link.label}
               </Link>
             ))}
+
+            <Link
+              href="/account/saved"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold text-ink hover:bg-canvas transition-colors"
+            >
+              <span className="flex items-center gap-2">
+                <Heart className="w-4 h-4 text-red-500" />
+                <span>Saved Vehicles</span>
+              </span>
+              {savedCount > 0 && (
+                <span className="rounded-full bg-red-100 text-red-700 px-2 py-0.5 text-xs font-bold">
+                  {savedCount}
+                </span>
+              )}
+            </Link>
+
+            <Link
+              href="/compare"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold text-ink hover:bg-canvas transition-colors"
+            >
+              <span className="flex items-center gap-2">
+                <GitCompare className="w-4 h-4 text-primary" />
+                <span>Compare Vehicles</span>
+              </span>
+              {compareIds.length > 0 && (
+                <span className="rounded-full bg-primary/10 text-primary px-2 py-0.5 text-xs font-bold">
+                  {compareIds.length}
+                </span>
+              )}
+            </Link>
+
+            <Link
+              href="/dealer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold text-ink hover:bg-canvas transition-colors"
+            >
+              <Building2 className="w-4 h-4 text-muted" />
+              <span>Dealer Console</span>
+            </Link>
+
+            <Link
+              href="/safety"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold text-ink hover:bg-canvas transition-colors"
+            >
+              <Shield className="w-4 h-4 text-muted" />
+              <span>Safety &amp; Fraud Guide</span>
+            </Link>
           </div>
 
           <div className="pt-2 border-t border-muted/10 flex flex-col gap-2">
-            <Link href="/sell" onClick={() => setMobileMenuOpen(false)}>
-              <Button className="w-full justify-center">Sell Your Car</Button>
+            <Link href="/sell/new" onClick={() => setMobileMenuOpen(false)}>
+              <Button className="w-full justify-center">Start Listing Your Car</Button>
             </Link>
           </div>
         </div>

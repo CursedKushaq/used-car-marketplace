@@ -48,6 +48,7 @@ export const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
         setIsSaved(true);
       }
       localStorage.setItem(SAVED_STORAGE_KEY, JSON.stringify(ids));
+      window.dispatchEvent(new Event("autobazaar_saved_updated"));
     } catch {
       setIsSaved(!isSaved);
     }
