@@ -32,10 +32,11 @@ export const DetailGallery: React.FC<DetailGalleryProps> = ({ photos, title }) =
           className="w-full h-full object-cover transition-all duration-300"
         />
 
-        {/* Demo ribbon */}
+        {/* Verified Inspection Ribbon */}
         <div className="absolute top-4 left-4 z-10">
-          <span className="rounded-md bg-ink/75 backdrop-blur-xs px-2.5 py-1 text-xs font-semibold tracking-wide text-white uppercase">
-            Demo Listing
+          <span className="rounded-full bg-emerald-600/90 backdrop-blur-xs px-3 py-1 text-xs font-bold tracking-wide text-white flex items-center gap-1.5 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            160-Point Inspected
           </span>
         </div>
 

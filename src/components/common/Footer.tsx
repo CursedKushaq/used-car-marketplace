@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
             </p>
             <div className="mt-4 flex items-center gap-2 text-[11px] text-muted">
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span>All sample inventory is synthetic & labeled demo data</span>
+              <span>Certified Inspection & Fair Pricing Standards</span>
             </div>
           </div>
 

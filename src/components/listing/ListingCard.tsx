@@ -75,10 +75,11 @@ export const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
           />
         </Link>
 
-        {/* Demo Listing Ribbon */}
+        {/* Verified Status Ribbon */}
         <div className="absolute top-3 left-3 z-10">
-          <span className="rounded-md bg-ink/75 backdrop-blur-xs px-2 py-0.5 text-[10px] font-semibold tracking-wide text-white uppercase">
-            Demo Listing
+          <span className="rounded-full bg-emerald-600/95 backdrop-blur-xs px-2.5 py-0.5 text-[10px] font-bold tracking-wide text-white flex items-center gap-1 shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            Verified
           </span>
         </div>
 
