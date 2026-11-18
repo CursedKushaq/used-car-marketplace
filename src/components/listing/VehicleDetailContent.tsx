@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import type { CarListing } from "@/server/modules/catalog/types";
-import { formatCurrency, formatPriceCompact, formatKm, formatOwnership } from "@/lib/format";
+import { formatCurrency, formatPriceCompact, formatKm, formatOwnership, formatEstimatedEmi } from "@/lib/format";
 import { DetailGallery } from "./DetailGallery";
 import { PriceRatingBadge } from "./PriceRatingBadge";
 import { VerificationLadderBadge } from "./VerificationLadderBadge";
@@ -13,6 +13,7 @@ import { PaperworkChecklistView } from "./PaperworkChecklistView";
 import { DealerScorecardView } from "./DealerScorecardView";
 import { EnquiryModal } from "./EnquiryModal";
 import { ListingCard } from "./ListingCard";
+import { EmiCalculator } from "../common/EmiCalculator";
 import { useCompare } from "../compare/CompareContext";
 import { Button } from "../ui/Button";
 import {
@@ -163,7 +164,15 @@ export const VehicleDetailContent: React.FC<VehicleDetailContentProps> = ({
                 />
               </div>
 
-              <p className="text-[11px] text-muted leading-tight border-t border-muted/10 pt-2.5">
+              {/* CarDekho / CarWale Style EMI Pill */}
+              <div className="flex items-center justify-between text-xs pt-2 border-t border-muted/10">
+                <span className="text-muted font-medium">Estimated Monthly EMI:</span>
+                <span className="font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-md">
+                  {formatEstimatedEmi(listing.priceInr)}
+                </span>
+              </div>
+
+              <p className="text-[11px] text-muted leading-tight border-t border-muted/10 pt-2">
                 Transfer fees &amp; RTO road tax are paid directly to the authority and not included in asking price.
               </p>
             </div>
@@ -303,6 +312,14 @@ export const VehicleDetailContent: React.FC<VehicleDetailContentProps> = ({
                 {listing.description}
               </p>
             </div>
+          </section>
+
+          {/* 5. Car Finance & EMI Calculator (CarDekho & CarWale style) */}
+          <section aria-labelledby="finance-calculator-section">
+            <h2 id="finance-calculator-section" className="sr-only">
+              Finance &amp; EMI Calculator
+            </h2>
+            <EmiCalculator initialPrice={listing.priceInr} carTitle={listing.title} />
           </section>
         </div>
 

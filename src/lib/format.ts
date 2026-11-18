@@ -105,3 +105,33 @@ export function formatRelativeTime(dateInput: Date | string | number): string {
     year: date.getFullYear() !== now.getFullYear() ? "numeric" : undefined,
   });
 }
+
+/**
+ * Calculate standard Indian Equated Monthly Installment (EMI)
+ * Formula: EMI = [P x R x (1+R)^N]/[(1+R)^N-1]
+ */
+export function calculateEmi(
+  principal: number,
+  annualRatePercent: number = 9.5,
+  tenureYears: number = 5
+): number {
+  if (principal <= 0) return 0;
+  const monthlyRate = annualRatePercent / 12 / 100;
+  const totalMonths = tenureYears * 12;
+  const emi =
+    (principal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) /
+    (Math.pow(1 + monthlyRate, totalMonths) - 1);
+  return Math.round(emi);
+}
+
+/**
+ * Format estimated monthly EMI, e.g. price 10,00,000 -> "EMI ₹16,800/mo"
+ */
+export function formatEstimatedEmi(
+  vehiclePrice: number,
+  loanRatio: number = 0.8
+): string {
+  const loanAmount = vehiclePrice * loanRatio;
+  const monthlyEmi = calculateEmi(loanAmount, 9.5, 5);
+  return `EMI from ${formatCurrency(monthlyEmi)}/mo`;
+}

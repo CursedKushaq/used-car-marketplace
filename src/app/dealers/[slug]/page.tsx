@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDealerBySlug, getAllDealers } from "@/server/modules/listings/service";
 import { ListingCard } from "@/components/listing/ListingCard";
+import { EmiCalculator } from "@/components/common/EmiCalculator";
 import { Button } from "@/components/ui/Button";
 import {
   Building2,
@@ -325,6 +326,14 @@ export default async function DealerDetailPage({ params }: DealerPageProps) {
             ))}
           </div>
         )}
+      </div>
+
+      {/* ── Showroom Car Loan EMI Planner ────────────────── */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <EmiCalculator
+          initialPrice={inventory[0]?.priceInr || 1500000}
+          carTitle={`Cars at ${profile.name}`}
+        />
       </div>
 
       {/* ── Dealer Contact & Location Section ────────────── */}

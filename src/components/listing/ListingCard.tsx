@@ -3,11 +3,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import type { CarListing } from "@/server/modules/catalog/types";
-import { formatPriceCompact, formatKm, formatOwnership } from "@/lib/format";
+import { formatPriceCompact, formatKm, formatOwnership, formatEstimatedEmi } from "@/lib/format";
 import { PriceRatingBadge } from "./PriceRatingBadge";
 import { VerificationLadderBadge } from "./VerificationLadderBadge";
 import { useCompare } from "../compare/CompareContext";
-import { Heart, Camera, MapPin, Check } from "lucide-react";
+import { Heart, Camera, MapPin, Check, MessageCircle } from "lucide-react";
 
 interface ListingCardProps {
   listing: CarListing;
@@ -141,6 +141,18 @@ export const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
           />
         </div>
 
+        {/* EMI & Inspection Score Row (CarDekho / CarWale style) */}
+        <div className="mt-1 flex items-center justify-between text-[11px]">
+          <span className="font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200/80 rounded-md px-2 py-0.5">
+            {formatEstimatedEmi(listing.priceInr)}
+          </span>
+          {listing.inspection && (
+            <span className="font-bold text-amber-900 bg-amber-50 border border-amber-200/80 rounded-md px-1.5 py-0.5">
+              ★ {listing.inspection.score}/10 Inspect
+            </span>
+          )}
+        </div>
+
         {/* Title */}
         <Link href={detailUrl} className="mt-2 block">
           <h3 className="font-bold text-ink text-base line-clamp-1 group-hover:text-primary transition-colors">
@@ -182,34 +194,51 @@ export const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
           )}
         </div>
 
-        {/* Locality & Compare Toggle */}
+        {/* Locality & Actions Row */}
         <div className="mt-3.5 pt-3 border-t border-muted/10 flex items-center justify-between text-xs text-muted">
-          <div className="flex items-center gap-1 truncate max-w-[65%]">
+          <div className="flex items-center gap-1 truncate max-w-[50%]">
             <MapPin className="w-3.5 h-3.5 text-muted/80 shrink-0" />
             <span className="truncate">{listing.locality}</span>
           </div>
 
-          {/* Compare Checkbox */}
-          <button
-            type="button"
-            onClick={handleToggleCompare}
-            className={`flex items-center gap-1.5 font-medium px-2 py-1 rounded-lg transition-colors ${
-              comparing
-                ? "bg-primary/10 text-primary font-semibold"
-                : "text-muted hover:text-ink hover:bg-canvas"
-            }`}
-          >
-            <div
-              className={`w-3.5 h-3.5 rounded border flex items-center justify-center transition-colors ${
+          <div className="flex items-center gap-2">
+            {listing.seller.type === "verified_dealer" && (
+              <a
+                href={`https://wa.me/${(listing.seller.whatsappNumber || "919848091822").replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
+                  `Hello ${listing.seller.name}! I saw ${listing.title} (${listing.registrationNumberMasked || ""}) on AutoBazaar. Is it available for a test drive?`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                title="Chat with showroom on WhatsApp"
+                className="p-1.5 rounded-lg bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors border border-[#25D366]/20"
+              >
+                <MessageCircle className="w-3.5 h-3.5" />
+              </a>
+            )}
+
+            {/* Compare Checkbox */}
+            <button
+              type="button"
+              onClick={handleToggleCompare}
+              className={`flex items-center gap-1 font-medium px-2 py-1 rounded-lg transition-colors ${
                 comparing
-                  ? "bg-primary border-primary text-white"
-                  : "border-muted/40 bg-surface"
+                  ? "bg-primary/10 text-primary font-semibold"
+                  : "text-muted hover:text-ink hover:bg-canvas"
               }`}
             >
-              {comparing && <Check className="w-2.5 h-2.5 stroke-[3]" />}
-            </div>
-            <span>Compare</span>
-          </button>
+              <div
+                className={`w-3.5 h-3.5 rounded border flex items-center justify-center transition-colors ${
+                  comparing
+                    ? "bg-primary border-primary text-white"
+                    : "border-muted/40 bg-surface"
+                }`}
+              >
+                {comparing && <Check className="w-2.5 h-2.5 stroke-[3]" />}
+              </div>
+              <span>Compare</span>
+            </button>
+          </div>
         </div>
       </div>
     </article>
